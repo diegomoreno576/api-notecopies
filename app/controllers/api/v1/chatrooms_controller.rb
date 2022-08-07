@@ -41,8 +41,8 @@ class Api::V1::ChatroomsController < ApplicationController
     end
   
     def authenticate_user
-      decoded_token = decode(request.headers['token'])
-      @user = User.find(decoded_token["user_id"])
+      decoded_jwt = decode(request.headers['jwt'])
+      @user = User.find(decoded_jwt["user_id"])
       render json: { message: 'Un-Authenticated Request', authenticated: false } unless @user
     end
   end
