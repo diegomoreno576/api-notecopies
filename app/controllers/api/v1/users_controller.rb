@@ -11,10 +11,10 @@ class Api::V1::UsersController < ApplicationController
   
       if user.save
         payload = {'user_id': user.id}
-        jwt = encode(payload)
+        token = encode(payload)
         render json: {
           user: UserSerializer.new(user),
-          jwt: jwt,
+          token: token,
           authenticated: true,
         }
       else
@@ -29,8 +29,8 @@ class Api::V1::UsersController < ApplicationController
     end
   
     def authenticate_user
-      decoded_jwt = decode(request.headers['jwt'])
-      @user = User.find(decoded_jwt["user_id"])
+      decoded_token = decode(request.headers['token'])
+      @user = User.find(decoded_token["user_id"])
       render json: { message: 'Un-Authenticated Request', authenticated: false } unless @user
     end
   

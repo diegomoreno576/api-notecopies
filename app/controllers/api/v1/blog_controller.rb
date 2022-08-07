@@ -12,8 +12,8 @@ class Api::V1::BlogController < ApplicationController
   
   
     def authenticate_user
-      decoded_jwt = decode(request.headers['jwt'])
-      @user = User.find(decoded_jwt["user_id"])
+      decoded_token = decode(request.headers['token'])
+      @user = User.find(decoded_token["user_id"])
       render json: { message: 'Un-Authenticated Request', authenticated: false } unless @user
     end
   end
