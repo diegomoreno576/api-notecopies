@@ -4,7 +4,7 @@ class Api::V1::BlogController < ApplicationController
     def index
         user = User.find_by(username: auth_params[:username])
         render json: {
-          blog: UserSerializer.new(user),
+          company: UserSerializer.new(user),
         }
       end
   
