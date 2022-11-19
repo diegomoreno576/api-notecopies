@@ -1,0 +1,3 @@
+class Instagram < Connection
+
+end

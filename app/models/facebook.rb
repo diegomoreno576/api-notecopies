@@ -1,0 +1,3 @@
+class Facebook < Connection
+
+end
