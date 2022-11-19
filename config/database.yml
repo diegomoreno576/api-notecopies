@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: notecopiesapi_production
+  url: <%= ENV['DATABASE_URL'] %>
   username: notecopiesapi
   password: <%= ENV["NOTECOPIESAPI_DATABASE_PASSWORD"] %>
